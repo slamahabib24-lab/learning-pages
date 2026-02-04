@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapter 1 Summary — SimUDuck</title>
+  <link rel="stylesheet" href="chapter1.css" />
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">Design Patterns — Chapter 1</p>
+      <h1>SimUDuck: A Story About Change</h1>
+      <p class="lead">
+        This chapter explains why inheritance fails when behavior changes often.
+        We move from a simple class hierarchy to interfaces, then to a key design
+        principle: separate what varies and encapsulate it.
+      </p>
+    </header>
+
+    <section class="cards">
+      <article class="card">
+        <div class="card-head">
+          <h2>1) Original Inheritance Design</h2>
+          <span class="tag">Works at first</span>
+        </div>
+        <div class="diagram">
+          <div class="box">Duck
+            <div class="muted">quack(), swim(), display()</div>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="row">
+            <div class="box">MallardDuck</div>
+            <div class="box">RedheadDuck</div>
+          </div>
+        </div>
+        <p>
+          A single superclass provides common behavior. It feels clean because
+          all ducks can quack and swim. But it assumes all ducks share the same behavior forever.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h2>2) Adding Fly to the Superclass</h2>
+          <span class="tag warning">Breaks reality</span>
+        </div>
+        <div class="diagram">
+          <div class="box">Duck
+            <div class="muted">+ fly()</div>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="row">
+            <div class="box">RubberDuck</div>
+            <div class="box">DecoyDuck</div>
+          </div>
+        </div>
+        <p>
+          Adding <strong>fly()</strong> to the superclass forces all ducks to fly.
+          Now rubber and decoy ducks fly on screen—an unintended side effect of a local change.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h2>3) Overriding in Subclasses</h2>
+          <span class="tag">Quick fix</span>
+        </div>
+        <div class="diagram">
+          <div class="box">RubberDuck
+            <div class="muted">fly() → do nothing</div>
+          </div>
+          <div class="box">DecoyDuck
+            <div class="muted">fly() → do nothing</div>
+          </div>
+        </div>
+        <p>
+          Overriding works but scales badly. Each new duck might need custom
+          overrides, which duplicate code and make future changes risky.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="card-head">
+          <h2>4) Interfaces: Flyable / Quackable</h2>
+          <span class="tag warning">No code reuse</span>
+        </div>
+        <div class="diagram">
+          <div class="row">
+            <div class="box">Flyable
+              <div class="muted">fly()</div>
+            </div>
+            <div class="box">Quackable
+              <div class="muted">quack()</div>
+            </div>
+          </div>
+          <div class="arrow">↓</div>
+          <div class="row">
+            <div class="box">MallardDuck</div>
+            <div class="box">RedheadDuck</div>
+            <div class="box">RubberDuck</div>
+          </div>
+        </div>
+        <p>
+          Interfaces stop inappropriate behavior, but they move behavior into each class.
+          When a behavior changes, dozens of classes must be edited—no reuse.
+        </p>
+      </article>
+
+      <article class="card highlight">
+        <div class="card-head">
+          <h2>5) The Key Design Principle</h2>
+          <span class="tag success">Correct direction</span>
+        </div>
+        <div class="principle">
+          <p class="quote">Identify what varies and encapsulate it.</p>
+          <p>
+            Separate the parts of your code that change from the parts that stay the same.
+            This reduces unintended consequences and makes systems more flexible.
+          </p>
+        </div>
+        <p>
+          Chapter 1 ends by setting up the next step: pull flying and quacking out of
+          Duck classes so behaviors can vary independently.
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
