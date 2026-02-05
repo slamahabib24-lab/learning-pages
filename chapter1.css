@@ -159,6 +159,34 @@ strong {
   color: var(--accent);
 }
 
+.cta {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.button {
+  display: inline-block;
+  text-decoration: none;
+  font-family: "IBM Plex Sans", "Trebuchet MS", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  background: var(--accent);
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+
+.button:hover {
+  filter: brightness(0.95);
+}
+
+.small {
+  font-size: 12px;
+}
+
 @media (max-width: 700px) {
   h1 { font-size: 30px; }
   .row { grid-auto-flow: row; }
